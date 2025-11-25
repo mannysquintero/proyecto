@@ -1,7 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="es">
+<head>
     <meta charset="UTF-8">
+    <title>Proyecto Interactivo</title>
+    <style>
+        /* Fondo de imagen con efecto overlay */
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('hhttps://thumbs.dreamstime.com/b/vector-del-modelo-conejo-de-pascua-fondo-plano-estilo-d%C3%ADa-fiesta-113806302.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        audio { display: none; }
+
+        .texto-mov {
+            position: relative;
+            animation: moverTexto 10s linear infinite;
+            color: #fff;
+            font-size: 2em;
+            text-shadow: 2px 2px 10px #ff69b4;
+        }
+
+        @keyframes moverTexto {
+            0% { left: -100%; }
+            50% { left: 50%; }
+            100% { left: 100%; }
+        }
+
+        .personaje {
+            display: block;
+            margin: 20px auto;
+            width: 350px;
+            filter: drop-shadow(0 0 15px #ff6ad5);
+            transition: transform 0.5s;
+        }
+
+        .personaje:hover { transform: scale(1.05) rotate(-5deg); }
+
+        .boton {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: #fff;
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.5s;
+            text-decoration: none;
+        }
+
+        .boton:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #ff1493;
+        }
+
+        p {
+            color: #fff;
+            text-align: center;
+            font-size: 1.2em;
+            margin: 20px;
+            animation: fadeIn 3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        .manzana {
+            position: absolute;
+            top: 50px;
+            left: -150px;
+            width: 100px];
+            animation: moverManzana 6s linear infinite;
+        }
+
+        @keyframes moverManzana {
+            0% { left: -150px; transform: rotate(0deg); }
+            50% { left: 80%; transform: rotate(30deg); }
+            100% { left: 110%; transform: rotate(0deg); }
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .video-container video {
+            width: 80%;
+            border: 5px solid #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #ff69b4;
+        }
+
+        @media screen and (max-width: 600px) {
+            .personaje { width: 250px; }
+            .texto-mov { font-size: 1.5em; }
+            .boton { font-size: 1em; padding: 10px 20px; }
+            .video-container video { width: 95%; }
+        }
+
+    </style>
+</head>
+<body>
+
+<!-- Música -->
+<audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Texto moviéndose -->
+<div class="texto-mov">¡Bienvenidxs al proyectoo de mannys!</div>
+
+<!-- Manzana -->
+<img src="manzana.gif" class="manzana" alt="Manzana animada">
+
+<!-- Imagen con mapa interactivo -->
+<img src="pink.png"
+     class="personaje"
+     usemap="#pink"
+     alt="Pink Diamond">
+
+<map name="pink">
+    <area shape="circle" coords="175,75,65" href="formulario1.html" alt="Pelo">
+    <area shape="circle" coords="175,201,23" href="formulario2.html" alt="Gema">
+</map>
+
+<!-- Párrafos originales -->
+<p>Este es el primer párrafo con información importante sobre el proyecto.</p>
+<p>Segundo párrafo explicando la interacción y los formularios.</p>
+<p>Tercer párrafo con enlaces a más contenidos y páginas adicionales.</p>
+
+<!-- 🔥 PÁRRAFOS DINÁMICOS DESDE ARCHIVO EXTERNO -->
+<div id="parrafos-dinamicos"></div>
+
+<!-- Video -->
+<div class="video-container">
+    <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+    </video>
+</div>
+
+<!-- Botones -->
+<div style="text-align:center;">
+    <a class="boton" href="formulario1.html">Ir al Formulario 1</a>
+    <a class="boton" href="formulario2.html">Ir al Formulario 2</a>
+</div>
+
+<!-- SCRIPT PARA CARGAR ARCHIVO DINÁMICO -->
+<script>
+    fetch("contenido/parrafos.html")
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById("parrafos-dinamicos").innerHTML = data;
+        })
+        .catch(error => {
+            console.error("Error cargando los párrafos:", error);
+        });
+</script>
+
+</body>
+</html>
+
     <title>Proyecto Interactivo</title>
     <style>
         /* Fondo de imagen con efecto overlay */
@@ -177,3 +347,4 @@
 
 </body>
 </html>
+
